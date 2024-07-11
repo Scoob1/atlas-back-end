@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Fetches employee data and exports TODO list to JSON file"""
 
-import csv
+import json
 import requests
 import sys
 
