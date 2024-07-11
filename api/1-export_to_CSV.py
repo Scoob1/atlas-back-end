@@ -12,19 +12,19 @@ def fetch_employee_data(employee_id):
     user_url = f"{base_url}/users/{employee_id}"
     todos_url = f"{base_url}/todos?userId={employee_id}"
 
-try:
-    user_response = requests.get(user_url)
-    todos_response = requests.get(todos_url)
+    try:
+        user_response = requests.get(user_url)
+        todos_response = requests.get(todos_url)
 
-    user_response.raise_for_status()
-    todos_response.raise_for_status()
+        user_response.raise_for_status()
+        todos_response.raise_for_status()
 
-    user_data = user_response.json()
-    todos_data = todos_response.json()
+        user_data = user_response.json()
+        todos_data = todos_response.json()
 
-    return user_data, todos_data
+        return user_data, todos_data
 
-except requests.ecxeptions.RequestException as e:
+    except requests.ecxeptions.RequestException as e:
     print(f"Error fetching data: {e}")
     return None, None
 
