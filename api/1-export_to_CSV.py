@@ -24,9 +24,9 @@ def fetch_employee_data(employee_id):
 
         return user_data, todos_data
 
-    except requests.ecxeptions.RequestException as e:
-    print(f"Error fetching data: {e}")
-    return None, None
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+        return None, None
 
 
 def export_to_csv(employee_id, employee, todos):
