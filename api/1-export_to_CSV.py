@@ -12,13 +12,21 @@ def fetch_employee_data(employee_id):
     user_url = f"{base_url}/users/{employee_id}"
     todos_url = f"{base_url}/todos?userId={employee_id}"
 
+try:
     user_response = requests.get(user_url)
     todos_response = requests.get(todos_url)
 
-    if user_response.status_code != 200 or todos_response.status_code != 200:
-        return None, None
+    user_response.raise_for_status()
+    todos_response.raise_for_status()
 
-    return user_response.json(), todos_response.json()
+    user_data = user_response.json()
+    todos_data = todos_response.json()
+
+    return user_data, todos_data
+
+except requests.ecxeptions.RequestException as e:
+    print(f"Error fetching data: {e}")
+    return None, None
 
 
 def export_to_csv(employee_id, employee, todos):
@@ -38,7 +46,7 @@ def export_to_csv(employee_id, employee, todos):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+        print("Usage: python3 1-export_to_CSV.py <employee_id>")
         sys.exit(1)
 
     try:
