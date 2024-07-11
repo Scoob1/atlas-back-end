@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""Fetches employee data and exports TODO list to CSV file"""
 
 import csv
 import requests
