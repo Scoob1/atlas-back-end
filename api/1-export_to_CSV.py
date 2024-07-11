@@ -48,7 +48,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 1-export_to_CSV.py <employee_id>")
         sys.exit(1)
-
+    
     try:
         employee_id = int(sys.argv[1])
     except ValueError:
